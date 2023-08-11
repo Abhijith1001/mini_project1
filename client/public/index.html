@@ -39,5 +39,16 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const inputFields = document.querySelectorAll("input[type='text'], input[type='email'], input[type='password']");
+
+          inputFields.forEach((input) => {
+              input.addEventListener("input", handleInput);
+          });
+      });
+
+      // Your validation and input handling functions here
+  </script>
   </body>
 </html>

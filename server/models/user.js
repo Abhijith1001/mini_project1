@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
 	lastName: { type: String, required: true },
 	email: { type: String, required: true },
 	password: { type: String, required: true },
+	verified:{type:Boolean,default:false},
+	confirmPassword: { type: String, required: true },
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -25,6 +27,11 @@ const validate = (data) => {
 		lastName: Joi.string().required().label("Last Name"),
 		email: Joi.string().email().required().label("Email"),
 		password: passwordComplexity().required().label("Password"),
+		confirmPassword: Joi.any()
+		.equal(Joi.ref('password'))
+		.required()
+		.label('Confirm Password')
+		.options({ messages: { 'any.only': '{{#label}} does not match' } }),
 	});
 	return schema.validate(data);
 };
