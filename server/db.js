@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 module.exports = () => {
 	const connectionParams = {
@@ -7,9 +7,9 @@ module.exports = () => {
 	};
 	try {
 		mongoose.connect(process.env.DB, connectionParams);
-		console.log("Connected to database successfully");
+		console.log("Connected to db successfully");
 	} catch (error) {
 		console.log(error);
-		console.log("Could not connect database!");
+		console.log("Could not connect db!");
 	}
 };
